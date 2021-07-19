@@ -2,14 +2,22 @@ apiVersion : v1
 kind: Deployment
 metadata:
   name: mdt-cifra
-    labels:
-      project: mdt1
+  labels:
+    app: mdt-cifra
 spec:
-  containers: 
-  - name : mdtcifra
-    image: 404smoke/mdt-cifra:latest
-    ports:
-      - containerPorts: 8080
+  selector:
+    matchLabels:
+      project: mdt1
+  template:
+    metadata:
+      labels:
+        project: mdt1
+    spec:
+      containers: 
+        - name : mdtcifra
+          image: 404smoke/mdt-cifra:latest
+          ports:
+            - containerPorts: 8080
       
 ---
 apiVersion: v1
@@ -23,5 +31,5 @@ spec:
     - name: app-listener
       protocol: TCP
       port: 80
-      targetPort: 80
+      targetPort: 8080
     type: LoadBalancer
