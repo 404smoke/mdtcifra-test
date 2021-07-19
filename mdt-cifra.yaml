@@ -13,12 +13,12 @@ spec:
     metadata:
       labels:
         project: mdt1
-    spec:
-      containers: 
-        - name: mdtcontainer
-          image: 404smoke/mdt-cifra:latest
-          ports:
-            - containerPort: 8080
+  spec:
+    containers: 
+      - name: mdtcontainer
+        image: 404smoke/mdt-cifra:latest
+        ports:
+          - containerPort: 8080
       
 ---
 apiVersion: v1
