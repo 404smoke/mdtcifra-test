@@ -5,6 +5,7 @@ metadata:
   labels:
     app: mdt-cifra
 spec:
+  replicas: 1
   selector:
     matchLabels:
       project: mdt1
@@ -14,7 +15,7 @@ spec:
         project: mdt1
     spec:
       containers: 
-        - name : mdtcifra
+        - name : mdtcontainer
           image: 404smoke/mdt-cifra:latest
           ports:
             - containerPort: 8080
