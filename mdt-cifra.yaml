@@ -1,4 +1,4 @@
-apiVersion : apps/v1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: mdt-cifra
@@ -14,17 +14,17 @@ spec:
       labels:
         project: mdt1
     spec:
-      containers: 
-        - name : mdtcontainer
+      containers:
+        - name: mdtcontainer
           image: 404smoke/mdt-cifra:latest
           ports:
-            - containerPort: 8080
-      
+            - containerPort: 80
+
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: mdt-cifra-srv
+  name: mdtservice
   labels:
     env: test
     owner: 404smoke
@@ -33,7 +33,7 @@ spec:
     project: mdt1
   ports:
     - name: app-listener
-      protocol  : TCP
-      port      : 80
+      protocol: TCP
+      port: 80
       targetPort: 8080
-    type: LoadBalancer
+  type: LoadBalancer
